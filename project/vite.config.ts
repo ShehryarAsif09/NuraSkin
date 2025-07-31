@@ -12,9 +12,9 @@ const copyRedirects = () => ({
     copyFileSync(resolve(__dirname, 'src/_redirects'), resolve(__dirname, 'dist/_redirects'))
   }
 })
-
 export default defineConfig({
-  plugins: [react(), copyRedirects()]
+  plugins: [react()],
+  publicDir: 'public'
 })
 
 // https://vitejs.dev/config/

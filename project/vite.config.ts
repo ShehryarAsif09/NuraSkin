@@ -1,5 +1,3 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { resolve } from 'path'
@@ -12,15 +10,12 @@ const copyRedirects = () => ({
     copyFileSync(resolve(__dirname, 'src/_redirects'), resolve(__dirname, 'dist/_redirects'))
   }
 })
-export default defineConfig({
-  plugins: [react()],
-  publicDir: 'public'
-})
 
-// https://vitejs.dev/config/
+// ✅ FINAL export with merged config
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), copyRedirects()],
+  publicDir: 'public',
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
-});
+})
